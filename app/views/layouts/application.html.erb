@@ -8,9 +8,128 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Overpass|Permanent+Marker" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <title>Isaac's Links</title>
+    <style>
+      html {
+        min-height: 100%;
+            }   
+      body {
+        min-height: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background: linear-gradient(225deg, #0088e9, #009ff4, #00b5fb, #00cbff, #00e0ff, #00d6ff, #00aeff, #0082fb, #0053e7, #0b0ebe);
+        color: rgb(0, 0, 0);
+        font-family: 'Overpass', sans-serif;
+            }
+      a {
+        color: rgba(255, 255, 255, 1.0);
+        text-decoration: none;
+        }
+      .avatar-image {
+          width: 184px;
+          height: 184px;
+          object-fit: cover;
+          border-radius: 184px;
+                              }
+      .thumbnail {
+          width: 48px;
+          height: 48px;
+          object-fit: cover;
+          border-radius: 48px;
+                    }
+      .main-container {
+          max-width: 640px;
+          margin: auto;
+                      }       
+      .image-row{
+        margin-bottom: 20px;
+        text-align: center;
+                }     
+      .name-row{
+        margin-bottom: 40px;
+        text-align: center;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 64px;
+        font-weight: 900;
+              }
+      .social-icons-row{
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-around;
+      } 
+      .link {
+          background-color: rgba(180, 176, 219, 0.479);
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          border-radius: 1000px;
+          padding: 5px;
+          padding-right: 53px;
+          box-shadow: 4px 4px 10px 0px rgba(0,0,0);
+            }         
+      .link-text {
+        text-align: center;
+        flex-grow: 1;
+      }      
+    </style>
   </head>
 
-  <body>
-    <%= yield %>
+<body>
+    <div class="main-container">
+        <div class="image-row">
+          <img class="avatar-image" src="/casual headshot.jpg" alt="Isaac Frank headshot">
+        </div>
+        
+        <div class = "name-row">
+          Isaac Frank
+        </div>
+
+        <div class = "social-icons-row">
+          <a href="https://www.facebook.com/IsaacAFrank/" target = "_blank">
+            <i class="fa-brands fa-facebook"></i> Facebook
+          </a>
+
+          <a href="https://www.instagram.com/_isaac_frank_/" target = "_blank">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+
+          <a href="https://www.linkedin.com/in/-isaac-frank-/" target = "_blank">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <!--
+          <a href="https://www.snapchat.com/add/lsaac0_0l" target = "_blank">
+            <i class="fa-brands fa-snapchat"></i> Snapchat
+          </a>
+          -->
+          <a href="https://www.youtube.com/@_isaac_frank_" target = "_blank">
+            <i class="fa-brands fa-youtube"></i> YouTube
+          </a>
+        </div>
+
+        <div class="links-row">
+          <% @list_of_items.each do |the_item| %>
+            <div class="link">
+              <img src="<%= the_item.thumbnail_url %>" class="thumbnail">
+
+              <a class="link-text" target="_blank" href="<%= the_item.link_url %>">
+                <%= the_item.link_description %>
+              </a>
+            </div>
+          <% end %>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
   </body>
 </html>
